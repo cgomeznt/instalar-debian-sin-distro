@@ -1,4 +1,4 @@
-### Instalar Debian sin la distro
+# Instalar Debian sin la distro
 
 Algo de teoría para saber que es una distro, lo siguiente es un extracto de https://es.wikipedia.org/wiki/Distribuci%C3%B3n_Linux
 
@@ -8,31 +8,31 @@ En pocas palabras una distribución es un instalador de un sistema operativo que
 
 En este laboratorio vamos instalar el sistema operativo universal Debian en un pendrive, pero sin utilizar la distro de Debian, es decir, lo vamos instalar paso a paso como si nosotros fuéramos la herramienta de distribución.
 
-* Tener un medio físico, cualquier cosa que sirva de almacenamiento permanente y que se pueda conectar por USB(disco duro, dispositivos de bloques, pendrive, etc)
+## Tener un medio físico, cualquier cosa que sirva de almacenamiento permanente y que se pueda conectar por USB(disco duro, dispositivos de bloques, pendrive, etc)
 
-* Particionar (opcional).
+## Particionar (opcional).
 
-* Formatearlo en ext4 (opcional, pero es buena idea).
+## Formatearlo en ext4 (opcional, pero es buena idea).
 
-* Instalamos los paquetes requeridos.
+## Instalamos los paquetes requeridos.
 
-* Herramienta para MBR (Solo para pendrive).
+## Herramienta para MBR (Solo para pendrive).
 
-* Ejecutar el debootstrap.
+## Ejecutar el debootstrap.
 
-* Hacer chroot (Conocido como jaula).
+## Hacer chroot (Conocido como jaula).
 
-* Algunas configuraciones básicas.
+## Algunas configuraciones básicas.
 
-* Instalar el Kernel.
+## Instalar el Kernel.
 
-* Instalar Grub 2.
+## Instalar Grub 2.
 
-* Preparar el fstab.
+## Preparar el fstab.
 
-* Instalar firmware.
+## Instalar firmware.
 
-* Instalar entorno gráfico de escritorio.
+## Instalar entorno gráfico de escritorio.
 
 
 
@@ -490,7 +490,7 @@ Ahora la instalación del grub dependerá si es en un disco de bloque o en un pe
 * Esta instalación la hacemos si es en un disco de bloques
 
 ```
-	debian:/# grub-install --force /dev/sdb
+	debian:/# grub-install /dev/sdb
 	Installing for i386-pc platform.
 	Instalación terminada. No se notificó ningún error.
 	
