@@ -291,15 +291,15 @@ Creamos la jaula con chroot.
 
 ```
 	# chroot /media/jaula/
-	#
+	debian:/#
 ```
 
 ### Algunas configuraciones basicas.
 
 ```
-	# pwd
+	debian:/# pwd
 	/
-	# vi /root/.bashrc
+	debian:/# vi /root/.bashrc
 		# Note: PS1 and umask are already set in /etc/profile. You should not
 		# need this unless you want different defaults for root.
 		PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
@@ -321,7 +321,7 @@ Creamos la jaula con chroot.
 Nos salimos del chroot
 
 ```
-	# exit
+	debian:/# exit
 ```
 
 Ingresamos nuevamente 
@@ -339,6 +339,7 @@ Hacemos una prueba para verificar que nuestro chroot este operativo, que podamos
 	proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
 	udev on /dev type devtmpfs (rw,relatime,size=10240k,nr_inodes=1013152,mode=755)
 	sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+
 	debian:/# fdisk -l
 
 	Disk /dev/sda: 465.8 GiB, 500107862016 bytes, 976773168 sectors
@@ -376,7 +377,7 @@ Colocar una clave a root y creamos un usuario.
 	Vuelva a escribir la nueva contraseña de UNIX: 
 	passwd: contraseña actualizada correctamente
 
-	debian:/# adduser cgome
+	debian:/# adduser cgomez
 ```
 
 Instalar y configurar los repositorios
@@ -507,7 +508,7 @@ Ahora la instalación del grub dependerá si es en un disco de bloque o en un pe
 Capturar el UUID del disco
 
 ```
-	root@debian:/home/cgome1# blkid | grep sdb
+	debian:/# blkid | grep sdb
 	/dev/sdb1: LABEL="debian-boot" UUID="26f5135b-d3ca-4b67-99df-d1f1d8833a5f" TYPE="ext4" PARTUUID="17f27ec1-01"
 ```
 
