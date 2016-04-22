@@ -553,7 +553,66 @@ Tambien puede escoger otro con
 
 Reiniciamos el equipo con el disco usb conectado y le indicamos al BIOS que haga el arranque del BOOTLOADER desde este disco.
 
+Si luego de iniciar no tienen el mapa del teclado correcto pueden hacer:
 
+Instalamos
+
+```
+	# apt-get install x11-xkb-utils
+```
+
+El mapa en español
+```
+	# setxkbmap -model pc105 -layout es
+```
+
+El mapa en latinoamericano
+```
+	# setxkbmap -model pc105 -layout latam
+```
+
+El mapa en Ingles
+```
+	# setxkbmap -model pc105 -layout us
+```
+
+```
+	#  setxkbmap -query
+	rules:      evdev
+	model:      pc105
+	layout:     es
+```
+
+
+Tambien si quieren tener lvm instalado para ver los volumenes.
+
+```
+	# apt-get install lvm2
+```
+
+```
+	# pvscan 
+	  PV /dev/sda5   VG VGroup   lvm2 [407,16 GiB / 0    free]
+	  Total: 1 [407,16 GiB] / in use: 1 [407,16 GiB] / in no VG: 0 [0   ]
+
+	# vgscan 
+	  Reading all physical volumes.  This may take a while...
+	  Found volume group "VGroup" using metadata type lvm2
+
+	# lvscan 
+	  ACTIVE            '/dev/VGroup/vg-root' [13,97 GiB] inherit
+	  ACTIVE            '/dev/VGroup/vg-swap' [2,04 GiB] inherit
+	  ACTIVE            '/dev/VGroup/vg-home' [391,16 GiB] inherit
+```
+
+Si no esta activo cuando ejecute vgscan debe ejecutar.
+
+```
+	# vgchange -a y
+	  3 logical volume(s) in volume group "VGroup" now active
+```
+
+Excelente....!!!
 
 	
 
