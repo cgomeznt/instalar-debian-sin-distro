@@ -1,5 +1,5 @@
 # Instalar Debian sin la distro
-
+ 
 Algo de teoría para saber que es una distro, lo siguiente es un extracto de https://es.wikipedia.org/wiki/Distribuci%C3%B3n_Linux
 
 Una distribución Linux (coloquialmente llamada distro) es una distribución de software basada en el núcleo Linux que incluye determinados paquetes de software para satisfacer las necesidades de un grupo específico de usuarios, dando así origen a ediciones domésticas, empresariales y para servidores. Por lo general están compuestas, total o mayoritariamente, de software libre, aunque a menudo incorporan aplicaciones o controladores propietarios.
@@ -285,6 +285,7 @@ Re-montamos los directorios (proc, dev y sys) de nuestro HOST en el directorio d
 	# mount -o bind /proc/ /media/jaula/proc/
 	# mount -o bind /dev/ /media/jaula/dev/
 	# mount -o bind /sys/ /media/jaula/sys/
+	# mount -o bind /dev/pts /home/jaula/dev/pts/
 ```
 
 Creamos la jaula con chroot.
@@ -453,7 +454,7 @@ Salimos del chroot y volvemos a ingresar para verificar la configuración de loc
 
 ### Instalar el Kernel.
 
-Con debootstrap fue seleccionado la arquitectura amd64, deberíamos instalar un kernel acorde a esta arquitectura.
+Con debootstrap fue seleccionado la arquitectura amd64, deberíamos instalar un kernel acorde a esta arquitectura. Con Debian es muy facil intalar un kernel ya preparado y sus modulos, si descargan un kernel desde www.kernel.org y lo compilan, deberan instalar y configurar los modulos del kernel.
 
 ```
 	debian:/# apt-get install linux-image-3.16.0-4-amd64 -y 
@@ -464,7 +465,7 @@ Con debootstrap fue seleccionado la arquitectura amd64, deberíamos instalar un 
 Instalamos grub2.
 
 ```
-	debian:/# apt-get install grub2
+	debian:/# apt-get install grub2 -y
 ```
 
 Ahora la instalación del grub dependerá si es en un disco de bloque o en un pendrive
@@ -524,7 +525,7 @@ Editamos el vfstab
 Instalamos algunas herramientas y firmwares para los adaptadores de red. 
 
 ```
-	debian:/# apt-get install pciutils
+	debian:/# apt-get install pciutils -y
 ```
 
 Listar todos los pci del equipo e instalar los firmware que sean requeridos, en este caso los adaptadores de red 
